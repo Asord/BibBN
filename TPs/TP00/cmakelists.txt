@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.9)
+project(TP00)
+
+set(CMAKE_CXX_STANDARD 11)
+add_executable(TP00 main.cpp Color.cpp callback.cpp callback.h)
+
+
+set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/Ressources/glew)
+set(CMAKE_LIBRARY_PATH ${CMAKE_SOURCE_DIR}/Ressources/glew/lib/Release/x64)
+set(GLEW_LIBRARY_PATH ${CMAKE_SOURCE_DIR}/Ressources/glew/lib/Release/Win32/glew32.lib)
+set(GLFW_LIBRARY_PATH ${CMAKE_SOURCE_DIR}/Ressources/glfw/lib-mingw-w64/libglfw3dll.a)
+set(OPENGL_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/Ressources/glfw/include)
+
+add_subdirectory(Ressources/glfw)
+find_package(OpenGL REQUIRED)
+
+if(OPENGL_FOUND)
+    message("OpenGL is found")
+    include_directories( ${OPENGL_INCLUDE_DIR})
+    target_link_libraries(TP00 ${OPENGL_gl_LIBRARY})
+endif()
+
+add_subdirectory(Ressources/glew)
+find_package(GLEW REQUIRED)
+
+if(GLEW_FOUND)
+    message("GLEW is found")
+    include_directories( ${GLEW_INCLUDE_DIRS})
+    #target_link_libraries(TP00 ${GLEW_LIBRARIES})
+endif()
+
+message("${GLEW_LIBRARY_PATH}")
+
+target_link_libraries(TP00 ${GLFW_LIBRARY_PATH} ${GLEW_LIBRARY_PATH})
