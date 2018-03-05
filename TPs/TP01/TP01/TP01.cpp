@@ -283,5 +283,6 @@ const char* GetGLErrorString()
 		return "GL_STACK_UNDERFLOW";
 	case GL_OUT_OF_MEMORY:
 		return "GL_OUT_OF_MEMORY";
-	return "Erreur inconnue";
+		return "Erreur inconnue";
+	}
 }
