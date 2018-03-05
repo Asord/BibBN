@@ -288,4 +288,8 @@ __pycache__/
 *.xsd.cs
 
 # BibBN Ressources exclude
-Ressources/*
+Ressources/
+TPs/Ressources/
+cmake-build-debug/
+cmake-build-release/
+Résultat/
